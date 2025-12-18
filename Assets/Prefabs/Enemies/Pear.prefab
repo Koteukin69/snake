@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6605444091581763777}
   - component: {fileID: 378539804777073923}
   - component: {fileID: 4170687466929492349}
+  - component: {fileID: 5213785286888879939}
   m_Layer: 0
   m_Name: Pear
   m_TagString: Untagged
@@ -102,9 +103,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startHealth: 100
-  _speed: 1
-  _damage: 20
-  _damageCooldown: 1
+  _speed: 1.5
+  _damage: 1.5
+  _attackCooldown: 5
 --- !u!58 &4170687466929492349
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -141,3 +142,18 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.3
+--- !u!114 &5213785286888879939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5112056082012486241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fe4fe975a2dbba468fb77e1e972f3f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 0}
+  _pulseScale: 1.1
+  _pulseTime: 0.5

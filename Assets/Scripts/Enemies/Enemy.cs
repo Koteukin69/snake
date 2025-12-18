@@ -45,6 +45,8 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (damage < 0) throw new ArgumentException("Damage cannot be negative", nameof(damage));
 
+        Debug.Log($"Enemy took {damage} damage.");
+
         _health -= damage;
         if (_health <= 0) Die();
     }

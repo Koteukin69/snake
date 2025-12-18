@@ -27,6 +27,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _enemyGroupSpread;
     [SerializeField] private float _areaIncrease = 1f;
 
+    public static Enemy[] Enemies;
+
     public Transform Player => _player;
     public Vector2 SpawnArea => _spawnArea;
     public float SafeZone => _safeZone;
@@ -63,7 +65,6 @@ public class EnemySpawner : MonoBehaviour
     IEnumerator SpawnCoroutine(uint[] enemies)
     {
         SetLeftEnemies(_leftEnemies + (uint) enemies.Sum(e => e));
-        _leftEnemies += (uint) enemies.Sum(e => e);
         while (enemies.Sum(e => e) > 0)
         {
             uint enemyIndex = GetWeightedRandomIndex(enemies);
@@ -110,7 +111,11 @@ public class EnemySpawner : MonoBehaviour
             
             Enemy enemy = enemyObj.GetComponent<Enemy>();
             enemy?.SetTarget(_player);
-            enemy.OnDie += () => SetLeftEnemies(_leftEnemies - 1);
+            Enemies = Enemies.Append(enemy).ToArray();
+            enemy.OnDie += () => {
+                Enemies = Enemies.Where(e => e != enemy).ToArray();
+                SetLeftEnemies(_leftEnemies - 1);
+            };
             return enemyObj;
         }).ToArray();
     }

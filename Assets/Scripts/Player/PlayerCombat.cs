@@ -4,15 +4,21 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour, IDamageable
 {
 
+    [SerializeField] private Camera _camera;
     [SerializeField] private float _startHealth = 100f;
     [SerializeField] private float _attackCooldown = 1f;
-    
+    [SerializeField] private float _attackDamage = 25f;
+    [SerializeField] private float _attackRadius = 2f;
+    [SerializeField] private float _attackAngle = 45f;
+
     public float Health => _health;
-    
     private Action Attacked;
 
     private float _health = 100f;
     private float _lastAttackTime;
+
+    private void OnValidate() =>
+        _camera ??= Camera.main;
 
     private void Start() {
         SetHealth(_startHealth);
@@ -58,7 +64,17 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     private void Attack()
     {
-        Debug.Log("Player attacked");
+        Vector2 mousePosition = _camera.ScreenToWorldPoint(GameManager.Input.MousePosition);
+        Vector2 attackDirection = (mousePosition - (Vector2)transform.position).normalized;
+
+        foreach (Enemy enemy in EnemySpawner.Enemies)
+        {
+            Vector2 enemyReleativePosition = (Vector2)enemy.transform.position - (Vector2)transform.position;
+            if (enemyReleativePosition.magnitude > _attackRadius
+                || Vector2.Angle(attackDirection, enemyReleativePosition) > _attackAngle) continue;
+
+            enemy.Damage(_attackDamage);
+        }
     }
 
     public event Action OnDie;

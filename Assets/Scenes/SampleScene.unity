@@ -198,7 +198,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbbbe377f8a47024db05e57d8bd0fd8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefabs: []
+  _enemyPrefabs:
+  - {fileID: 5112056082012486241, guid: 931e0fa95012c0145b7037f87004f0fc, type: 3}
+  - {fileID: 5112056082012486241, guid: e4a1c01b55adfbd4ea321c666f95f83c, type: 3}
   _enemiesSpawnProps:
   - {x: 0, y: 15, z: 5}
   - {x: 6, y: 10, z: 4}
@@ -207,8 +209,9 @@ MonoBehaviour:
   _groupSize: {x: 3, y: 7}
   _spawnTime: 1
   _spawnArea: {x: 12, y: 6}
-  _safeZone: 1
-  _enemyGroupSpread: 0
+  _safeZone: 2
+  _enemyGroupSpread: 3
+  _areaIncrease: 1
 --- !u!114 &47289891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +235,9 @@ GameObject:
   m_Component:
   - component: {fileID: 325528008}
   - component: {fileID: 325528007}
+  - component: {fileID: 325528010}
   - component: {fileID: 325528009}
+  - component: {fileID: 325528011}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -297,6 +302,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &325528010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325528006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0701cf3f2dba89849b45677a7def7556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startHealth: 100
+  _attackCooldown: 1
+  _attackDamage: 25
+  _attackRadius: 4
+  _attackAngle: 45
+--- !u!114 &325528011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325528006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a815e0195f09ea4b894d92c89dc11cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerCombat: {fileID: 325528010}
 --- !u!1 &374930024
 GameObject:
   m_ObjectHideFlags: 0
