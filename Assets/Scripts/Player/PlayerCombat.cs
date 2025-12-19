@@ -67,7 +67,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         Vector2 mousePosition = _camera.ScreenToWorldPoint(GameManager.Input.MousePosition);
         Vector2 attackDirection = (mousePosition - (Vector2)transform.position).normalized;
 
-        foreach (Enemy enemy in EnemySpawner.Enemies)
+        Enemy[] enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
+        foreach (Enemy enemy in enemies)
         {
             Vector2 enemyReleativePosition = (Vector2)enemy.transform.position - (Vector2)transform.position;
             if (enemyReleativePosition.magnitude > _attackRadius

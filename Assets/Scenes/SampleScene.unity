@@ -208,9 +208,9 @@ MonoBehaviour:
   _enemiesParent: {fileID: 47289889}
   _groupSize: {x: 3, y: 7}
   _spawnTime: 1
-  _spawnArea: {x: 12, y: 6}
+  _spawnArea: {x: 10, y: 5}
   _safeZone: 2
-  _enemyGroupSpread: 3
+  _enemyGroupSpread: 1
   _areaIncrease: 1
 --- !u!114 &47289891
 MonoBehaviour:
@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 325528010}
   - component: {fileID: 325528009}
   - component: {fileID: 325528011}
+  - component: {fileID: 325528012}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -314,6 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0701cf3f2dba89849b45677a7def7556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 519420031}
   _startHealth: 100
   _attackCooldown: 1
   _attackDamage: 25
@@ -332,6 +334,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerCombat: {fileID: 325528010}
+--- !u!114 &325528012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325528006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fe4fe975a2dbba468fb77e1e972f3f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 325528008}
+  _pulseScale: 1.1
+  _pulseTime: 0.5
 --- !u!1 &374930024
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,8 +759,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 8c0a2dfe4204d5a40bf2c59dd1836ef5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
