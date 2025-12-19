@@ -12,7 +12,9 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     [SerializeField] private float _attackAngle = 45f;
 
     public float Health => _health;
-    private Action Attacked;
+    public float AttackAngle => _attackAngle;
+    
+    public event Action Attacked;
 
     private float _health = 100f;
     private float _lastAttackTime;
